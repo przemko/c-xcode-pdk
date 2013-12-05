@@ -19,8 +19,8 @@ void Master(int n, int* shared_memory, int semaphore_id)
 {
 	print_log(MASTERLOGID, "rozpoczynam pracę");
 	
-	print_log(MASTERLOGID, "idę spać na 10 sekund (po tym czasie wydam polecenie zakończenia pracy)");
-	sleep(10); // kiedy proces śpi to nie upływa jego czas!
+	print_log(MASTERLOGID, "idę spać na 20 sekund (po tym czasie wydam polecenie zakończenia pracy)");
+	sleep(20); // kiedy proces śpi to nie upływa jego czas!
 	
     print_log(MASTERLOGID, "piszę do wspólnej pamięci wartość 1 (HALT)");
 	shared_memory[0] = 1;

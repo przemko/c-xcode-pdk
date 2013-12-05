@@ -22,13 +22,15 @@ void Slave(int id, int* shared_memory, int semaphore_id)
     char message[80];
     
     char *kim_jestem[3] = {"Producent", "Dostawca", "Konsument"};
+    int ile_snu[3] = {1, 2, 3};
     
     sprintf(message, "rozpoczynam pracę jako %s", kim_jestem[id]);
 	print_log(id, message);
 	
     do {
-        print_log(id, "idę spać na 1 sekundę");
-        sleep(1);
+        sprintf(message, "idę spać na %d s", ile_snu[id]);
+        print_log(id, message);
+        sleep(ile_snu[id]);
     
     
         switch(id)
@@ -41,7 +43,7 @@ void Slave(int id, int* shared_memory, int semaphore_id)
                 print_log(id, "produkuję jedną sztukę");
                 shared_memory[1]++;
                 
-                sprintf(message, "stan: w fabryce = %d, w sklepie %d", shared_memory[1], shared_memory[2]);
+                sprintf(message, "stan: w fabryce = %d, w sklepie = %d", shared_memory[1], shared_memory[2]);
                 print_log(id, message);
                 
                 print_log(id, "otwieram semafor dla fabryki");
@@ -82,7 +84,7 @@ void Slave(int id, int* shared_memory, int semaphore_id)
                     print_log(id, "konsumuję jedną sztukę");
                     shared_memory[2]--;
                     
-                    sprintf(message, "stan: w fabryce = %d, w sklepie %d", shared_memory[1], shared_memory[2]);
+                    sprintf(message, "stan: w fabryce = %d, w sklepie = %d", shared_memory[1], shared_memory[2]);
                     print_log(id, message);
 
                 }
